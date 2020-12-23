@@ -1,17 +1,18 @@
 import math
 import base64
 
-flag = "xm4s{this_is_dummy_flag}"
+# flag = "xm4s{this_is_dummy_flag}"
+with open("./flag.txt", "r") as f:
+    flag = f.read()
+
 key = "paswd"
 blocksize = len(key)
 initial_vector = "abcde"
-encrypted_flag_answer = b'aW4kYHpQUDt+dUVuC0tSamoWX0RjexFBT307HxUI'
 
 # 足りない分は'#'で埋める
 if len(flag)%blocksize != 0:
     flag+= '#' * (blocksize - len(flag)%blocksize)
 
-print(f"flag: {flag}")
 print(f"flag lenght: {len(flag)}")
 print(f"block size: {blocksize}")
 
@@ -30,9 +31,4 @@ for i in range(0,len(flag),blocksize):
 encrypted_flag = base64.b64encode(encrypted_flag.encode())
 
 print("encrypted(your flag):",encrypted_flag)
-print("encrypted(true flag):",encrypted_flag_answer)
 
-if encrypted_flag != encrypted_flag_answer:
-    print("Your flag is invalid!")
-else:
-    print("Your flag is right!")

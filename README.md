@@ -9,6 +9,7 @@
 ## Files
 
 - enc.py
+- encrypted_flag.txt
 
 ## Write up
 
